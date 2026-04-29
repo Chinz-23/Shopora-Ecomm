@@ -22,7 +22,7 @@ export const getInitialUserList = createAsyncThunk(
     (args,thunkAPI) => {
         
         // getting data from firebase
-        const unsub = onSnapshot(collection(db, "buybusy-redux"),(snapShot) => {
+        onSnapshot(collection(db, "buybusy-redux"),(snapShot) => {
             const users = snapShot.docs.map((doc) => {
                 return {
                     id:doc.id,
@@ -55,8 +55,8 @@ export const createUserThunk = createAsyncThunk(
             return;
         }
 
-        // if email not found create new user 
-        const docRef =await addDoc(collection(db, "buybusy-redux"), {
+        // if email not found create new user
+        await addDoc(collection(db, "buybusy-redux"), {
             name:data.name,
             email:data.email,
             password:data.password,

@@ -39,7 +39,7 @@ export const getInitialCartOrdersThunk = createAsyncThunk(
         if(isLoggedIn){
             // getting real-time update of data
 
-            const unsub = onSnapshot(doc(db, "buybusy-redux",userLoggedIn.id), (doc) => {
+            onSnapshot(doc(db, "buybusy-redux",userLoggedIn.id), (doc) => {
                 // storing all the data in cart
                 const data = doc.data();
                 thunkAPI.dispatch(setCart(data.cart));
@@ -297,7 +297,7 @@ const productSlice = createSlice({
             const cart = action.payload;
             if(cart){    
                 let sum=0,len =0;
-                cart.map((item) => {
+                cart.forEach((item) => {
                     Number(sum += item.price * item.quantity);
                     Number(len += item.quantity);
                 });
