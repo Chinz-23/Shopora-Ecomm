@@ -45,7 +45,7 @@ export function Home(){
     // get the initial data of cart and previous orders history
     useEffect(() => {
         dispatch(getInitialCartOrdersThunk());
-    },[userLoggedIn]);
+    },[userLoggedIn, dispatch]);
 
 
 
@@ -60,19 +60,19 @@ export function Home(){
         const token=window.localStorage.getItem("token");
         if(token){
             // if user is logged in
-            // getting loggedIn user's data 
+            // getting loggedIn user's data
             const index=window.localStorage.getItem("index");
             const user=JSON.parse(index);
             // set token and loggedIn user
             dispatch(setLoggedIn(token));
             dispatch(setUserLoggedIn(user));
         }
-    },[]);
+    },[dispatch]);
 
     // get list of all the user's in database
     useEffect(()=>{
         dispatch(getInitialUserList());
-    },[isLoggedIn]);
+    },[isLoggedIn, dispatch]);
 
     
 

@@ -39,7 +39,7 @@ export function SignIn(){
         // sign in user
         const status=dispatch(createSessionThunk(data));
         // if user signed in redirect to corresponding page
-        {status?navigate("/"):navigate("/signin")};        
+        status?navigate("/"):navigate("/signin");
     }   
 
 
