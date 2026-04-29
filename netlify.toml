@@ -1,4 +1,17 @@
+# [[redirects]]
+#   from = "/*"
+#   to = "/"
+#   status = 200
+
+[build]
+  # This tells Netlify how to compile your React code
+  command = "npm run build"
+  
+  # This tells Netlify which folder to serve to the public
+  publish = "build"
+
 [[redirects]]
+  # This prevents the "Page Not Found" error when refreshing React routes
   from = "/*"
-  to = "/"
+  to = "/index.html"
   status = 200
